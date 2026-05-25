@@ -68,15 +68,13 @@ public class FusekiService {
             Model model = ModelFactory.createDefaultModel();
             
             // Leemos el archivo RDF/Turtle desde la carpeta resources
-            InputStream in = getClass().getClassLoader().getResourceAsStream("dbpedia_subconjunto.ttl");
-            
+            InputStream in = getClass().getClassLoader().getResourceAsStream("dbpedia_subconjunto.rdf");                
             if (in == null) {
-                resultados.add("Error: No se encontró el archivo 'dbpedia_subconjunto.ttl' en resources.");
+                resultados.add("Error: No se encontró el archivo 'dbpedia_subconjunto.rdf' en resources.");
                 return resultados;
             }
             
-            // Cargamos los datos en el modelo (cambiar "TTL" por "RDF/XML" si tu archivo es .rdf)
-            model.read(in, null, "TTL");
+            model.read(in, null, "RDF/XML");
 
             // Ejecutamos la query directamente sobre el modelo en memoria (Local)
             try (QueryExecution qexec = QueryExecution.create(query, model)) {

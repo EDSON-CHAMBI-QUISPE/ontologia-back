@@ -1,0 +1,266 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<rdf:RDF
+	xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+	xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+	xmlns:dbo="http://dbpedia.org/ontology/" >
+  <rdf:Description rdf:about="http://dbpedia.org/resource/Cristóbal_Balenciaga_(TV_series)">
+    <rdf:type rdf:resource="http://dbpedia.org/ontology/TelevisionShow" />
+    <rdfs:label xml:lang="en">Cristóbal Balenciaga (TV series)</rdfs:label>
+    <dbo:creator rdf:resource="http://dbpedia.org/resource/Jon_Garaño" />
+    <dbo:creator rdf:resource="http://dbpedia.org/resource/Aitor_Arregi_Galdos" />
+    <dbo:director rdf:resource="http://dbpedia.org/resource/Aitor_Arregi_Galdos" />
+    <dbo:director rdf:resource="http://dbpedia.org/resource/Jon_Garaño" />
+  </rdf:Description>
+  <rdf:Description rdf:about="http://dbpedia.org/resource/Daddy_Issues_(TV_series)">
+    <rdf:type rdf:resource="http://dbpedia.org/ontology/TelevisionShow" />
+    <rdfs:label xml:lang="en">Daddy Issues (TV series)</rdfs:label>
+    <dbo:creator rdf:resource="http://dbpedia.org/resource/Danielle_Ward" />
+    <dbo:director rdf:resource="http://dbpedia.org/resource/Catherine_Morshead" />
+    <dbo:director rdf:resource="http://dbpedia.org/resource/Damon_Beesley" />
+  </rdf:Description>
+  <rdf:Description rdf:about="http://dbpedia.org/resource/Dhootha">
+    <rdf:type rdf:resource="http://dbpedia.org/ontology/TelevisionShow" />
+    <rdfs:label xml:lang="en">Dhootha</rdfs:label>
+    <dbo:creator rdf:resource="http://dbpedia.org/resource/Vikram_Kumar" />
+    <dbo:director rdf:resource="http://dbpedia.org/resource/Vikram_Kumar" />
+  </rdf:Description>
+  <rdf:Description rdf:about="http://dbpedia.org/resource/Dope_Girls">
+    <rdf:type rdf:resource="http://dbpedia.org/ontology/TelevisionShow" />
+    <rdfs:label xml:lang="en">Dope Girls</rdfs:label>
+    <dbo:creator rdf:resource="http://dbpedia.org/resource/Polly_Stenham" />
+    <dbo:director rdf:resource="http://dbpedia.org/resource/Shannon_Murphy" />
+  </rdf:Description>
+  <rdf:Description rdf:about="http://dbpedia.org/resource/Douglas_Is_Cancelled">
+    <rdf:type rdf:resource="http://dbpedia.org/ontology/TelevisionShow" />
+    <rdfs:label xml:lang="en">Douglas Is Cancelled</rdfs:label>
+    <dbo:creator rdf:resource="http://dbpedia.org/resource/Steven_Moffat" />
+    <dbo:director rdf:resource="http://dbpedia.org/resource/Ben_Palmer" />
+  </rdf:Description>
+  <rdf:Description rdf:about="http://dbpedia.org/resource/Gandhi_(TV_series)">
+    <rdf:type rdf:resource="http://dbpedia.org/ontology/TelevisionShow" />
+    <rdfs:label xml:lang="en">Gandhi (TV series)</rdfs:label>
+    <dbo:creator rdf:resource="http://dbpedia.org/resource/Hansal_Mehta" />
+    <dbo:creator rdf:resource="http://dbpedia.org/resource/Sameer_Nair" />
+    <dbo:director rdf:resource="http://dbpedia.org/resource/Hansal_Mehta" />
+  </rdf:Description>
+  <rdf:Description rdf:about="http://dbpedia.org/resource/K-On!_(TV_series)">
+    <rdf:type rdf:resource="http://dbpedia.org/ontology/TelevisionShow" />
+    <rdfs:label xml:lang="en">K-On! (TV series)</rdfs:label>
+    <dbo:creator rdf:resource="http://dbpedia.org/resource/Kakifly" />
+    <dbo:director rdf:resource="http://dbpedia.org/resource/Naoko_Yamada" />
+  </rdf:Description>
+  <rdf:Description rdf:about="http://dbpedia.org/resource/Killer_Soup">
+    <rdf:type rdf:resource="http://dbpedia.org/ontology/TelevisionShow" />
+    <rdfs:label xml:lang="en">Killer Soup</rdfs:label>
+    <dbo:creator rdf:resource="http://dbpedia.org/resource/Abhishek_Chaubey" />
+    <dbo:director rdf:resource="http://dbpedia.org/resource/Abhishek_Chaubey" />
+  </rdf:Description>
+  <rdf:Description rdf:about="http://dbpedia.org/resource/Malikappuram:_Apathbandhavan_Ayyappan">
+    <rdf:type rdf:resource="http://dbpedia.org/ontology/TelevisionShow" />
+    <rdfs:label xml:lang="en">Malikappuram: Apathbandhavan Ayyappan</rdfs:label>
+    <dbo:creator rdf:resource="http://dbpedia.org/resource/Merryland_Studio" />
+    <dbo:director rdf:resource="http://dbpedia.org/resource/Sudheesh_Sankar" />
+  </rdf:Description>
+  <rdf:Description rdf:about="http://dbpedia.org/resource/Pulang_Araw">
+    <rdf:type rdf:resource="http://dbpedia.org/ontology/TelevisionShow" />
+    <rdfs:label xml:lang="en">Pulang Araw</rdfs:label>
+    <dbo:creator rdf:resource="http://dbpedia.org/resource/Suzette_Doctolero" />
+    <dbo:director rdf:resource="http://dbpedia.org/resource/Dominic_Zapata" />
+  </rdf:Description>
+  <rdf:Description rdf:about="http://dbpedia.org/resource/Replacing_Chef_Chico">
+    <rdf:type rdf:resource="http://dbpedia.org/ontology/TelevisionShow" />
+    <rdfs:label xml:lang="en">Replacing Chef Chico</rdfs:label>
+    <dbo:creator rdf:resource="http://dbpedia.org/resource/Antoinette_Jadaone" />
+    <dbo:director rdf:resource="http://dbpedia.org/resource/Dan_Villegas" />
+  </rdf:Description>
+  <rdf:Description rdf:about="http://dbpedia.org/resource/Soundtrack_1">
+    <rdf:type rdf:resource="http://dbpedia.org/ontology/TelevisionShow" />
+    <rdfs:label xml:lang="es">Soundtrack 1 (serie de televisión)</rdfs:label>
+    <rdfs:label xml:lang="en">Soundtrack 1</rdfs:label>
+    <dbo:creator rdf:resource="http://dbpedia.org/resource/NHN_Entertainment_Corporation" />
+    <dbo:director rdf:resource="http://dbpedia.org/resource/Kim_Hee-won_(director)" />
+  </rdf:Description>
+  <rdf:Description rdf:about="http://dbpedia.org/resource/The_Narrow_Road_to_the_Deep_North_(miniseries)">
+    <rdf:type rdf:resource="http://dbpedia.org/ontology/TelevisionShow" />
+    <rdfs:label xml:lang="en">The Narrow Road to the Deep North (miniseries)</rdfs:label>
+    <dbo:creator rdf:resource="http://dbpedia.org/resource/Justin_Kurzel" />
+    <dbo:creator rdf:resource="http://dbpedia.org/resource/Shaun_Grant" />
+    <dbo:director rdf:resource="http://dbpedia.org/resource/Justin_Kurzel" />
+  </rdf:Description>
+  <rdf:Description rdf:about="http://dbpedia.org/resource/Zindabahar">
+    <rdf:type rdf:resource="http://dbpedia.org/ontology/TelevisionShow" />
+    <rdfs:label xml:lang="en">Zindabahar</rdfs:label>
+    <dbo:creator rdf:resource="http://dbpedia.org/resource/Mamunur_Rashid" />
+    <dbo:director rdf:resource="http://dbpedia.org/resource/Fazlay_Azim_Jewel" />
+  </rdf:Description>
+  <rdf:Description rdf:about="http://dbpedia.org/resource/Agents_of_Mystery">
+    <rdf:type rdf:resource="http://dbpedia.org/ontology/TelevisionShow" />
+    <rdfs:label xml:lang="en">Agents of Mystery</rdfs:label>
+    <dbo:creator rdf:resource="http://dbpedia.org/resource/Jung_Jong-yeon" />
+    <dbo:director rdf:resource="http://dbpedia.org/resource/Jung_Jong-yeon" />
+  </rdf:Description>
+  <rdf:Description rdf:about="http://dbpedia.org/resource/Backrooms_(web_series)">
+    <rdf:type rdf:resource="http://dbpedia.org/ontology/TelevisionShow" />
+    <rdfs:label xml:lang="en">Backrooms (web series)</rdfs:label>
+    <rdfs:label xml:lang="en">The Backrooms (film)</rdfs:label>
+    <dbo:creator rdf:resource="http://dbpedia.org/resource/Backrooms_(web_series)" />
+    <dbo:director rdf:resource="http://dbpedia.org/resource/Backrooms_(web_series)" />
+  </rdf:Description>
+  <rdf:Description rdf:about="http://dbpedia.org/resource/I_Hate_You_(TV_series)">
+    <rdf:type rdf:resource="http://dbpedia.org/ontology/TelevisionShow" />
+    <rdfs:label xml:lang="en">I Hate You (TV series)</rdfs:label>
+    <dbo:creator rdf:resource="http://dbpedia.org/resource/Robert_Popper" />
+    <dbo:director rdf:resource="http://dbpedia.org/resource/Damon_Beesley" />
+  </rdf:Description>
+  <rdf:Description rdf:about="http://dbpedia.org/resource/Lockerbie:_A_Search_for_Truth">
+    <rdf:type rdf:resource="http://dbpedia.org/ontology/TelevisionShow" />
+    <rdfs:label xml:lang="en">Lockerbie: A Search for Truth</rdfs:label>
+    <dbo:creator rdf:resource="http://dbpedia.org/resource/David_Harrower" />
+    <dbo:director rdf:resource="http://dbpedia.org/resource/Jim_Loach" />
+    <dbo:director rdf:resource="http://dbpedia.org/resource/Otto_Bathurst" />
+  </rdf:Description>
+  <rdf:Description rdf:about="http://dbpedia.org/resource/Poacher_(TV_series)">
+    <rdf:type rdf:resource="http://dbpedia.org/ontology/TelevisionShow" />
+    <rdfs:label xml:lang="en">Poacher (TV series)</rdfs:label>
+    <dbo:creator rdf:resource="http://dbpedia.org/resource/Richie_Mehta" />
+    <dbo:director rdf:resource="http://dbpedia.org/resource/Richie_Mehta" />
+  </rdf:Description>
+  <rdf:Description rdf:about="http://dbpedia.org/resource/Rainn_Wilson_and_the_Geography_of_Bliss">
+    <rdf:type rdf:resource="http://dbpedia.org/ontology/TelevisionShow" />
+    <rdfs:label xml:lang="en">Rainn Wilson and the Geography of Bliss</rdfs:label>
+    <dbo:creator rdf:resource="http://dbpedia.org/resource/Casey_Scharf" />
+    <dbo:director rdf:resource="http://dbpedia.org/resource/Niharika_Desai" />
+  </rdf:Description>
+  <rdf:Description rdf:about="http://dbpedia.org/resource/Raisinghani_VS_Raisinghani">
+    <rdf:type rdf:resource="http://dbpedia.org/ontology/TelevisionShow" />
+    <rdfs:label xml:lang="en">Raisinghani VS Raisinghani</rdfs:label>
+    <rdfs:label xml:lang="en">Raisinghani vs Raisinghani</rdfs:label>
+    <dbo:creator rdf:resource="http://dbpedia.org/resource/Aniruddha_Rajderkar" />
+    <dbo:director rdf:resource="http://dbpedia.org/resource/Aniruddha_Rajderkar" />
+  </rdf:Description>
+  <rdf:Description rdf:about="http://dbpedia.org/resource/Rematch_(miniseries)">
+    <rdf:type rdf:resource="http://dbpedia.org/ontology/TelevisionShow" />
+    <rdfs:label xml:lang="en">Rematch (miniseries)</rdfs:label>
+    <dbo:creator rdf:resource="http://dbpedia.org/resource/Yan_England" />
+    <dbo:director rdf:resource="http://dbpedia.org/resource/Yan_England" />
+  </rdf:Description>
+  <rdf:Description rdf:about="http://dbpedia.org/resource/Ren_Faire">
+    <rdf:type rdf:resource="http://dbpedia.org/ontology/TelevisionShow" />
+    <rdfs:label xml:lang="en">Ren Faire</rdfs:label>
+    <dbo:creator rdf:resource="http://dbpedia.org/resource/Lance_Oppenheim" />
+    <dbo:director rdf:resource="http://dbpedia.org/resource/Lance_Oppenheim" />
+  </rdf:Description>
+  <rdf:Description rdf:about="http://dbpedia.org/resource/Sausage_Party:_Foodtopia">
+    <rdf:type rdf:resource="http://dbpedia.org/ontology/TelevisionShow" />
+    <rdfs:label xml:lang="en">Sausage Party: Foodtopia</rdfs:label>
+    <dbo:creator rdf:resource="http://dbpedia.org/resource/Seth_Rogen" />
+    <dbo:creator rdf:resource="http://dbpedia.org/resource/Evan_Goldberg" />
+    <dbo:director rdf:resource="http://dbpedia.org/resource/Conrad_Vernon" />
+  </rdf:Description>
+  <rdf:Description rdf:about="http://dbpedia.org/resource/Special_for_Women">
+    <rdf:type rdf:resource="http://dbpedia.org/ontology/TelevisionShow" />
+    <rdfs:label xml:lang="en">Special for Women</rdfs:label>
+    <dbo:creator rdf:resource="http://dbpedia.org/resource/George_Lefferts" />
+    <dbo:director rdf:resource="http://dbpedia.org/resource/George_Lefferts" />
+    <dbo:director rdf:resource="http://dbpedia.org/resource/Seymour_Robbie" />
+    <dbo:director rdf:resource="http://dbpedia.org/resource/William_Graham_(director)" />
+    <dbo:director rdf:resource="http://dbpedia.org/resource/Lela_Swift" />
+    <dbo:director rdf:resource="http://dbpedia.org/resource/H._Wesley_Kenney" />
+  </rdf:Description>
+  <rdf:Description rdf:about="http://dbpedia.org/resource/The_Studio_(TV_series)">
+    <rdf:type rdf:resource="http://dbpedia.org/ontology/TelevisionShow" />
+    <rdfs:label xml:lang="en">The Studio (TV series)</rdfs:label>
+    <dbo:creator rdf:resource="http://dbpedia.org/resource/Seth_Rogen" />
+    <dbo:creator rdf:resource="http://dbpedia.org/resource/Evan_Goldberg" />
+    <dbo:director rdf:resource="http://dbpedia.org/resource/Seth_Rogen" />
+    <dbo:director rdf:resource="http://dbpedia.org/resource/Evan_Goldberg" />
+  </rdf:Description>
+  <rdf:Description rdf:about="http://dbpedia.org/resource/Tires_(TV_series)">
+    <rdf:type rdf:resource="http://dbpedia.org/ontology/TelevisionShow" />
+    <rdfs:label xml:lang="en">Tires (TV series)</rdfs:label>
+    <dbo:creator rdf:resource="http://dbpedia.org/resource/Shane_Gillis" />
+    <dbo:creator rdf:resource="http://dbpedia.org/resource/Tires_(TV_series)" />
+    <dbo:director rdf:resource="http://dbpedia.org/resource/Tires_(TV_series)" />
+  </rdf:Description>
+  <rdf:Description rdf:about="http://dbpedia.org/resource/Zorro_(French_TV_series)">
+    <rdf:type rdf:resource="http://dbpedia.org/ontology/TelevisionShow" />
+    <rdfs:label xml:lang="en">Zorro (French TV series)</rdfs:label>
+    <dbo:creator rdf:resource="http://dbpedia.org/resource/Benjamin_Charbit" />
+    <dbo:director rdf:resource="http://dbpedia.org/resource/Jean-Baptiste_Saurel" />
+    <dbo:director rdf:resource="http://dbpedia.org/resource/Émilie_Noblet" />
+  </rdf:Description>
+  <rdf:Description rdf:about="http://dbpedia.org/resource/Bujji_and_Bhairava">
+    <rdf:type rdf:resource="http://dbpedia.org/ontology/TelevisionShow" />
+    <rdfs:label xml:lang="en">Bujji and Bhairava</rdfs:label>
+    <rdfs:label xml:lang="en">Bujji &amp; Bhairava</rdfs:label>
+    <dbo:creator rdf:resource="http://dbpedia.org/resource/Nag_Ashwin" />
+    <dbo:director rdf:resource="http://dbpedia.org/resource/Nag_Ashwin" />
+  </rdf:Description>
+  <rdf:Description rdf:about="http://dbpedia.org/resource/Candida_(1961_TV_play)">
+    <rdf:type rdf:resource="http://dbpedia.org/ontology/TelevisionShow" />
+    <rdfs:label xml:lang="en">Candida (1961 TV play)</rdfs:label>
+    <dbo:creator rdf:resource="http://dbpedia.org/resource/George_Bernard_Shaw" />
+    <dbo:director rdf:resource="http://dbpedia.org/resource/Naomi_Capon" />
+  </rdf:Description>
+  <rdf:Description rdf:about="http://dbpedia.org/resource/Kairi_–_Rishta_Khatta_Meetha">
+    <rdf:type rdf:resource="http://dbpedia.org/ontology/TelevisionShow" />
+    <rdfs:label xml:lang="en">Kairi: Rishta Khatta Meetha</rdfs:label>
+    <rdfs:label xml:lang="en">Kairi – Rishta Khatta Meetha</rdfs:label>
+    <dbo:creator rdf:resource="http://dbpedia.org/resource/Sumeet_Hukamchand_Mittal" />
+    <dbo:creator rdf:resource="http://dbpedia.org/resource/Shashi_Mittal" />
+    <dbo:director rdf:resource="http://dbpedia.org/resource/Yash_Chauhan" />
+    <dbo:director rdf:resource="http://dbpedia.org/resource/Deepak_Chavan" />
+  </rdf:Description>
+  <rdf:Description rdf:about="http://dbpedia.org/resource/She_the_People_(TV_series)">
+    <rdf:type rdf:resource="http://dbpedia.org/ontology/TelevisionShow" />
+    <rdfs:label xml:lang="en">Miss Governor</rdfs:label>
+    <rdfs:label xml:lang="en">She the People (TV series)</rdfs:label>
+    <dbo:creator rdf:resource="http://dbpedia.org/resource/Tyler_Perry" />
+    <dbo:director rdf:resource="http://dbpedia.org/resource/Tyler_Perry" />
+  </rdf:Description>
+  <rdf:Description rdf:about="http://dbpedia.org/resource/The_Forgotten_Army_-_Azaadi_Ke_Liye">
+    <rdf:type rdf:resource="http://dbpedia.org/ontology/TelevisionShow" />
+    <rdfs:label xml:lang="en">The Forgotten Army – Azaadi Ke Liye</rdfs:label>
+    <rdfs:label xml:lang="en">The Forgotten Army - Azaadi Ke Liye</rdfs:label>
+    <dbo:creator rdf:resource="http://dbpedia.org/resource/Kabir_Khan_(director)" />
+    <dbo:director rdf:resource="http://dbpedia.org/resource/Kabir_Khan_(director)" />
+  </rdf:Description>
+  <rdf:Description rdf:about="http://dbpedia.org/resource/Behind_the_Attraction">
+    <rdf:type rdf:resource="http://dbpedia.org/ontology/TelevisionShow" />
+    <rdfs:label xml:lang="en">Behind the Attraction</rdfs:label>
+    <dbo:creator rdf:resource="http://dbpedia.org/resource/Brian_Volk-Weiss" />
+    <dbo:director rdf:resource="http://dbpedia.org/resource/Brian_Volk-Weiss" />
+  </rdf:Description>
+  <rdf:Description rdf:about="http://dbpedia.org/resource/From_Cradle_to_Stage_(TV_series)">
+    <rdf:type rdf:resource="http://dbpedia.org/ontology/TelevisionShow" />
+    <rdfs:label xml:lang="en">From Cradle to Stage (TV series)</rdfs:label>
+    <dbo:creator rdf:resource="http://dbpedia.org/resource/Dave_Grohl" />
+    <dbo:director rdf:resource="http://dbpedia.org/resource/Dave_Grohl" />
+  </rdf:Description>
+  <rdf:Description rdf:about="http://dbpedia.org/resource/Glitch_(South_Korean_TV_series)">
+    <rdf:type rdf:resource="http://dbpedia.org/ontology/TelevisionShow" />
+    <rdfs:label xml:lang="en">Glitch (South Korean TV series)</rdfs:label>
+    <rdfs:label xml:lang="es">Glitch (serie de televisión de Corea del Sur)</rdfs:label>
+    <dbo:creator rdf:resource="http://dbpedia.org/resource/Netflix" />
+    <dbo:director rdf:resource="http://dbpedia.org/resource/Roh_Deok" />
+  </rdf:Description>
+  <rdf:Description rdf:about="http://dbpedia.org/resource/How_I_Met_Your_Dad">
+    <rdf:type rdf:resource="http://dbpedia.org/ontology/TelevisionShow" />
+    <rdfs:label xml:lang="en">How I Met Your Dad</rdfs:label>
+    <dbo:creator rdf:resource="http://dbpedia.org/resource/Carter_Bays" />
+    <dbo:creator rdf:resource="http://dbpedia.org/resource/Craig_Thomas_(screenwriter)" />
+    <dbo:creator rdf:resource="http://dbpedia.org/resource/Emily_Spivey" />
+    <dbo:director rdf:resource="http://dbpedia.org/resource/Rob_Greenberg" />
+  </rdf:Description>
+  <rdf:Description rdf:about="http://dbpedia.org/resource/Breaking_Bad">
+    <rdf:type rdf:resource="http://dbpedia.org/ontology/TelevisionShow" />
+    <rdfs:label xml:lang="es">Breaking Bad</rdfs:label>
+    <dbo:director rdf:resource="http://dbpedia.org/resource/Vince_Gilligan" />
+  </rdf:Description>
+
+  <rdf:Description rdf:about="http://dbpedia.org/resource/Dark_(TV_series)">
+    <rdf:type rdf:resource="http://dbpedia.org/ontology/TelevisionShow" />
+    <rdfs:label xml:lang="es">Dark (Serie de TV)</rdfs:label>
+    <dbo:director rdf:resource="http://dbpedia.org/resource/Baran_bo_Odar" />
+  </rdf:Description>
+</rdf:RDF>
