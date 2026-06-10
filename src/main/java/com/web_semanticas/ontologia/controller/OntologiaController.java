@@ -1,5 +1,6 @@
 package com.web_semanticas.ontologia.controller;
 
+import java.util.Collections;
 import java.util.List;
 import java.util.Map;
 
@@ -39,4 +40,26 @@ public class OntologiaController {
                 return service.ejecutarConsulta(request.getSparql());
         }
     }
+
+    // --- NUEVO ENDPOINT PARA DISPARAR EL ENLAZAMIENTO MASIVO SEGURO ---
+    @PostMapping("/enlazar")
+public Map<String, String> ejecutarEnlazadoMasivo(@RequestBody Map<String, String> params) {
+    String claseLocal = params.get("claseLocal");
+    String claseDbpedia = params.get("claseDbpedia"); // Requerido si es offline para validación semántica
+    String tipoMapeo = params.getOrDefault("tipoMapeo", "ONLINE").toUpperCase(); 
+
+    if (claseLocal == null) {
+        return Collections.singletonMap("resultado", "Error: Falta el campo requerido 'claseLocal'.");
+    }
+
+    String mensajeResultado;
+    if ("OFFLINE".equals(tipoMapeo)) {
+        mensajeResultado = service.autoEnlazarMasivoOffline(claseLocal, claseDbpedia);
+    } else {
+        mensajeResultado = service.autoEnlazarMasivoSinDuplicados(claseLocal);
+    }
+    
+    return Collections.singletonMap("resultado", mensajeResultado);
+}
+
 }
