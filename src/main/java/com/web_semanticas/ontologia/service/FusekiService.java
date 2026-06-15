@@ -18,6 +18,7 @@ import org.apache.jena.rdf.model.RDFNode;
 import org.apache.jena.sparql.exec.http.QueryExecutionHTTP;
 import org.apache.jena.update.UpdateExecution;
 import org.apache.jena.update.UpdateFactory;
+import org.apache.jena.update.UpdateRequest;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -249,6 +250,531 @@ public String autoEnlazarMasivoOffline(String claseLocal, String claseDbpedia) {
     } catch (Exception e) {
         return "Error durante el enlazamiento masivo offline: " + e.getMessage();
     }
+}
+
+public String importarSeriesDesdeDBpedia(int limite) {
+
+    String consultaDBpedia = """
+        PREFIX dbo: <http://dbpedia.org/ontology/>
+        PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+
+        SELECT DISTINCT
+            ?serie
+            ?label
+            ?abstract
+            ?episodes
+            ?seasons
+        WHERE {
+
+            ?serie a dbo:TelevisionShow .
+
+            OPTIONAL { ?serie dbo:numberOfEpisodes ?episodes }
+            OPTIONAL { ?serie dbo:numberOfSeasons ?seasons }
+            OPTIONAL { ?serie dbo:abstract ?abstract }
+
+            ?serie rdfs:label ?label .
+
+            FILTER(lang(?label)="en")
+
+            OPTIONAL {
+                FILTER(lang(?abstract)="en")
+            }
+        }
+        LIMIT """ + limite;
+
+    int insertadas = 0;
+
+    try {
+
+        Query query = QueryFactory.create(consultaDBpedia);
+
+        try (QueryExecution qexec =
+                QueryExecutionHTTP.service(DBPEDIA_ENDPOINT_URL)
+                        .query(query)
+                        .build()) {
+
+            ResultSet rs = qexec.execSelect();
+
+            while (rs.hasNext()) {
+
+                QuerySolution sol = rs.next();
+
+                String uriDbpedia =
+                        sol.getResource("serie").getURI();
+
+                String titulo =
+                        sol.getLiteral("label").getString();
+
+                String descripcion = "";
+
+                if (sol.contains("abstract")) {
+                    descripcion =
+                            sol.getLiteral("abstract").getString()
+                                    .replace("\"", "'");
+                }
+
+                String temporadas = "0";
+
+                if (sol.contains("seasons")) {
+                    temporadas =
+                            sol.get("seasons").toString();
+                }
+
+                String episodios = "0";
+
+                if (sol.contains("episodes")) {
+                    episodios =
+                            sol.get("episodes").toString();
+                }
+
+                String nombreIndividual =
+                        generarNombreSeguro(titulo);
+
+                String insert = """
+                    PREFIX ont: <http://www.semanticweb.org/dell/ontologies/2026/2#>
+                    PREFIX owl: <http://www.w3.org/2002/07/owl#>
+                    PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+                    PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+
+                    INSERT DATA {
+
+                        ont:%s rdf:type ont:Series_televisivas ;
+
+                            ont:tituloSerie "%s" ;
+
+                            ont:descripcion "%s" ;
+
+                            ont:numeroTemporadas %s ;
+
+                            ont:numeroEpisodios %s ;
+
+                            owl:sameAs <%s> .
+                    }
+                    """.formatted(
+                        nombreIndividual,
+                        titulo.replace("\"", "'"),
+                        descripcion,
+                        temporadas,
+                        episodios,
+                        uriDbpedia
+                );
+
+                try {
+
+                    UpdateRequest request =
+                            UpdateFactory.create(insert);
+
+                    UpdateExecution.service(FUSEKI_UPDATE_URL)
+                            .update(request)
+                            .execute();
+
+                    insertadas++;
+
+                } catch (Exception e) {
+                        System.out.println("Error insertando: " + titulo +
+                                        " -> " + e.getMessage());
+                    }
+            }
+        }
+
+        return "Series importadas: " + insertadas;
+
+    } catch (Exception e) {
+
+        return "Error: " + e.getMessage();
+    }
+}
+
+private String generarNombreSeguro(String texto) {
+
+    String nombre = texto
+            .replaceAll("[^a-zA-Z0-9]", "_")
+            .replaceAll("_+", "_");
+
+    if (Character.isDigit(nombre.charAt(0))) {
+        nombre = "Serie_" + nombre;
+    }
+
+    return nombre;
+}
+
+
+public String importarGenerosDesdeDBpedia(int limite) {
+
+    String consultaDBpedia = """
+    PREFIX dbo: <http://dbpedia.org/ontology/>
+    PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+
+    SELECT DISTINCT ?genre ?label
+    WHERE {
+
+        ?serie a dbo:TelevisionShow .
+        ?serie dbo:genre ?genre .
+
+        ?genre rdfs:label ?label .
+
+        FILTER(lang(?label)="en")
+    }
+    LIMIT """ + limite;
+
+    int insertados = 0;
+
+    try {
+
+        Query query = QueryFactory.create(consultaDBpedia);
+
+        try (QueryExecution qexec =
+                QueryExecutionHTTP.service(DBPEDIA_ENDPOINT_URL)
+                        .query(query)
+                        .build()) {
+
+            ResultSet rs = qexec.execSelect();
+
+            while (rs.hasNext()) {
+
+                QuerySolution sol = rs.next();
+
+                String uriDbpedia =
+                        sol.getResource("genre").getURI();
+
+                String nombreGenero =
+                        sol.getLiteral("label").getString();
+
+                String individual =
+                        generarNombreSeguro(nombreGenero);
+
+                String insert = """
+                PREFIX ont:<http://www.semanticweb.org/dell/ontologies/2026/2#>
+                PREFIX rdf:<http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+                PREFIX owl:<http://www.w3.org/2002/07/owl#>
+
+                INSERT DATA {
+
+                    ont:%s rdf:type ont:Genero ;
+
+                    ont:nombreGenero "%s" ;
+
+                    owl:sameAs <%s> .
+                }
+                """.formatted(
+                        individual,
+                        nombreGenero.replace("\"","'"),
+                        uriDbpedia
+                );
+
+                try {
+
+                    UpdateExecution.service(FUSEKI_UPDATE_URL)
+                            .update(UpdateFactory.create(insert))
+                            .execute();
+
+                    insertados++;
+
+                } catch(Exception ex) {
+                    System.out.println(
+                        "Error insertando género "
+                        + nombreGenero + " -> "
+                        + ex.getMessage()
+                    );
+                }
+            }
+        }
+
+    } catch(Exception e) {
+        return "Error: " + e.getMessage();
+    }
+
+    return "Generos: " + insertados;
+}
+
+
+public String importarDirectoresDesdeDBpedia(int limite) {
+
+    String consulta = """
+        PREFIX dbo:<http://dbpedia.org/ontology/>
+        PREFIX rdfs:<http://www.w3.org/2000/01/rdf-schema#>
+
+        SELECT DISTINCT ?director ?nombre
+        WHERE{
+
+            ?serie a dbo:TelevisionShow .
+            ?serie dbo:creator ?director .
+
+            ?director rdfs:label ?nombre .
+
+            FILTER(lang(?nombre)="en")
+        }
+        LIMIT """ + limite;
+
+    return importarPersonasGenericas(
+            consulta,
+            "Director",
+            "nombreDirector"
+    );
+}
+
+public String importarActoresDesdeDBpedia(int limite) {
+
+    String consulta = """
+    PREFIX dbo:<http://dbpedia.org/ontology/>
+    PREFIX rdfs:<http://www.w3.org/2000/01/rdf-schema#>
+
+    SELECT DISTINCT ?persona ?nombre
+    WHERE{
+        ?persona a dbo:Actor .
+        ?persona rdfs:label ?nombre .
+        FILTER(lang(?nombre)="en")
+    }
+    LIMIT """ + limite;
+
+    return importarPersonasGenericas(
+            consulta,
+            "Actor/Actriz",
+            "actorInterpretadoPor"
+    );
+}
+
+public String importarProductorasDesdeDBpedia(int limite) {
+
+    String consulta = """
+    PREFIX dbo:<http://dbpedia.org/ontology/>
+    PREFIX rdfs:<http://www.w3.org/2000/01/rdf-schema#>
+
+    SELECT DISTINCT ?empresa ?nombre
+    WHERE{
+        ?empresa a dbo:Company .
+        ?empresa rdfs:label ?nombre .
+        FILTER(lang(?nombre)="en")
+    }
+    LIMIT """ + limite;
+
+    int insertados = 0;
+
+    try {
+
+        Query query = QueryFactory.create(consulta);
+
+        try(QueryExecution qexec =
+                QueryExecutionHTTP.service(DBPEDIA_ENDPOINT_URL)
+                        .query(query)
+                        .build()) {
+
+            ResultSet rs = qexec.execSelect();
+
+            while(rs.hasNext()) {
+
+                QuerySolution sol = rs.next();
+
+                String uri = sol.getResource("empresa").getURI();
+
+                String nombre =
+                        sol.getLiteral("nombre").getString();
+
+                String individual =
+                        generarNombreSeguro(nombre);
+
+                String insert = """
+                PREFIX ont:<http://www.semanticweb.org/dell/ontologies/2026/2#>
+                PREFIX rdf:<http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+                PREFIX owl:<http://www.w3.org/2002/07/owl#>
+
+                INSERT DATA {
+
+                    ont:%s rdf:type ont:Productora ;
+
+                    ont:nombreProduc "%s" ;
+
+                    owl:sameAs <%s> .
+                }
+                """.formatted(
+                        individual,
+                        nombre.replace("\"","'"),
+                        uri
+                );
+
+                UpdateExecution.service(FUSEKI_UPDATE_URL)
+                        .update(UpdateFactory.create(insert))
+                        .execute();
+
+                insertados++;
+            }
+        }
+
+    } catch(Exception e) {
+        return e.getMessage();
+    }
+
+    return "Productoras: " + insertados;
+}
+
+public String importarPlataformasDesdeDBpedia(int limite) {
+
+    String consulta = """
+    PREFIX dbo:<http://dbpedia.org/ontology/>
+    PREFIX rdfs:<http://www.w3.org/2000/01/rdf-schema#>
+
+    SELECT DISTINCT ?canal ?nombre
+    WHERE{
+        ?canal a dbo:TelevisionStation .
+        ?canal rdfs:label ?nombre .
+        FILTER(lang(?nombre)="en")
+    }
+    LIMIT """ + limite;
+
+    int insertados = 0;
+
+    try {
+
+        Query query = QueryFactory.create(consulta);
+
+        try(QueryExecution qexec =
+                QueryExecutionHTTP.service(DBPEDIA_ENDPOINT_URL)
+                        .query(query)
+                        .build()) {
+
+            ResultSet rs = qexec.execSelect();
+
+            while(rs.hasNext()) {
+
+                QuerySolution sol = rs.next();
+
+                String uri =
+                        sol.getResource("canal").getURI();
+
+                String nombre =
+                        sol.getLiteral("nombre").getString();
+
+                String individual =
+                        generarNombreSeguro(nombre);
+
+                String insert = """
+                PREFIX ont:<http://www.semanticweb.org/dell/ontologies/2026/2#>
+                PREFIX rdf:<http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+                PREFIX owl:<http://www.w3.org/2002/07/owl#>
+
+                INSERT DATA {
+
+                    ont:%s rdf:type ont:PlataformaEmision ;
+
+                    ont:nombrePlataforma "%s" ;
+
+                    owl:sameAs <%s> .
+                }
+                """.formatted(
+                        individual,
+                        nombre.replace("\"","'"),
+                        uri
+                );
+
+                UpdateExecution.service(FUSEKI_UPDATE_URL)
+                        .update(UpdateFactory.create(insert))
+                        .execute();
+
+                insertados++;
+            }
+        }
+
+    } catch(Exception e) {
+        return e.getMessage();
+    }
+
+    return "Plataformas: " + insertados;
+}
+
+private String importarPersonasGenericas(
+        String consulta,
+        String claseOntologia,
+        String propiedadNombre) {
+
+    int insertados = 0;
+
+    try {
+
+        Query query = QueryFactory.create(consulta);
+
+        try(QueryExecution qexec =
+                QueryExecutionHTTP.service(DBPEDIA_ENDPOINT_URL)
+                        .query(query)
+                        .build()) {
+
+            ResultSet rs = qexec.execSelect();
+
+            while(rs.hasNext()) {
+
+                QuerySolution sol = rs.next();
+                
+                String claseURI = claseOntologia.contains("/")
+                        ? "<http://www.semanticweb.org/dell/ontologies/2026/2#" + claseOntologia + ">"
+                        : "ont:" + claseOntologia;
+
+                String uri;
+
+                        if(sol.contains("director"))
+                            uri = sol.getResource("director").getURI();
+                        else if(sol.contains("persona"))
+                            uri = sol.getResource("persona").getURI();
+                        else
+                            continue;
+
+                String nombre =
+                        sol.getLiteral("nombre").getString();
+
+                String individual =
+                        generarNombreSeguro(nombre);
+
+                String insert = String.format("""
+                    PREFIX ont:<http://www.semanticweb.org/dell/ontologies/2026/2#>
+                    PREFIX rdf:<http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+                    PREFIX owl:<http://www.w3.org/2002/07/owl#>
+
+                    INSERT DATA {
+
+                        ont:%s rdf:type %s ;
+
+                        ont:%s "%s" ;
+
+                        owl:sameAs <%s> .
+                    }
+                    """,
+                            individual,
+                            claseURI,
+                            propiedadNombre,
+                            nombre.replace("\"","'"),
+                            uri
+                    );
+
+                UpdateExecution.service(FUSEKI_UPDATE_URL)
+                        .update(UpdateFactory.create(insert))
+                        .execute();
+
+                insertados++;
+            }
+        }
+
+    } catch(Exception e) {
+        return e.getMessage();
+    }
+
+    return claseOntologia + ": " + insertados;
+}
+
+public String poblarTodoDBpedia(int limite) {
+
+    StringBuilder sb = new StringBuilder();
+
+    sb.append(importarSeriesDesdeDBpedia(limite)).append("\n");
+
+    sb.append(importarGenerosDesdeDBpedia(10)).append("\n");
+
+    sb.append(importarDirectoresDesdeDBpedia(113)).append("\n");
+
+    sb.append(importarActoresDesdeDBpedia(1000)).append("\n");
+
+    sb.append(importarProductorasDesdeDBpedia(20)).append("\n");
+
+    sb.append(importarPlataformasDesdeDBpedia(15)).append("\n");
+
+    return sb.toString();
 }
 
 }

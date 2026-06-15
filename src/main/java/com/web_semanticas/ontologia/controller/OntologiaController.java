@@ -62,4 +62,21 @@ public Map<String, String> ejecutarEnlazadoMasivo(@RequestBody Map<String, Strin
     return Collections.singletonMap("resultado", mensajeResultado);
 }
 
+@PostMapping("/importar-series")
+public Map<String,String> importarSeries(
+        @RequestBody Map<String,Integer> body) {
+
+    int limite =
+            body.getOrDefault("limite",100);
+
+    String resultado =
+            service.poblarTodoDBpedia(limite);
+
+    return Collections.singletonMap(
+            "resultado",
+            resultado
+    );
+}
+
+
 }
